@@ -13,23 +13,15 @@ public class ScriptureDisplayer extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scripture_displayer);
         Intent intent = getIntent();
-        //TextView textView = (TextView) findViewById(R.id.displayText);
-        String message = intent.getStringExtra(MainActivity.EXTRA_KEY);
-        //message += " " + intent.getStringExtra("chapter");
-        //message += ":" + intent.getStringExtra("verse");
-        TextView textView = new TextView(this);
-        textView.setText("Your fav script: " + message);
-        textView.setTextSize(22);
-        setContentView(textView);
-    }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_scripture_displayer, menu);
-//        return true;
-//    }
+        final TextView textView = (TextView) findViewById(R.id.displayText);
+        String book = intent.getStringExtra(MainActivity.BOOK_KEY);
+        String chapter = intent.getStringExtra(MainActivity.CHAPTER_KEY);
+        String verses = intent.getStringExtra(MainActivity.VERSE_KEY);
+        textView.setText(book + " " + chapter + ":" + verses);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

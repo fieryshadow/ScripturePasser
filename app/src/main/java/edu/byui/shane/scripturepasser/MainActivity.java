@@ -11,7 +11,9 @@ import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final String EXTRA_KEY = "com.byui.shane.MainActivityExtraKey";
+    public static final String BOOK_KEY = "com.byui.shane.MainActivity.BOOK";
+    public static final String CHAPTER_KEY = "com.byui.shane.MainActivity.CHAPTER";
+    public static final String VERSE_KEY = "com.byui.shane.MainActivity.VERSE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +45,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void submitScripture(View view) {
         Intent intent = new Intent(this, ScriptureDisplayer.class);
-        EditText book = (EditText) findViewById(R.id.sBook);
-        EditText chapter = (EditText) findViewById(R.id.sChapter);
-        EditText verse = (EditText) findViewById(R.id.sVerse);
-        String message = book.getText().toString() + " " + chapter.getText().toString() + ":" + verse.getText().toString();
-        intent.putExtra(MainActivity.EXTRA_KEY, message);
-        //intent.putExtra("book", editText.getText().toString());
-        //editText = (EditText) findViewById(R.id.sChapter);
-        //intent.putExtra("chapter", editText.getText().toString());
-        //editText = (EditText) findViewById(R.id.sVerse);
-        //intent.putExtra("verse", editText.getText().toString());
+        intent.putExtra(MainActivity.BOOK_KEY, ((EditText) findViewById(R.id.sBook)).getText().toString());
+        intent.putExtra(MainActivity.CHAPTER_KEY, ((EditText) findViewById(R.id.sChapter)).getText().toString());
+        intent.putExtra(MainActivity.VERSE_KEY, ((EditText) findViewById(R.id.sVerse)).getText().toString());
         startActivity(intent);
     }
 }
